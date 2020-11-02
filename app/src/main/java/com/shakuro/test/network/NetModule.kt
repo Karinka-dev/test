@@ -1,4 +1,4 @@
-package com.shakuro.test
+package com.shakuro.test.network
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

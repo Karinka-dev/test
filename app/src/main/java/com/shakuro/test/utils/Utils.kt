@@ -1,4 +1,4 @@
-package com.shakuro.test
+package com.shakuro.test.utils
 
 
 sealed class DataState<out R> {

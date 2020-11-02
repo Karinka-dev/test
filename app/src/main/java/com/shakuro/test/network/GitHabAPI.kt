@@ -1,5 +1,6 @@
-package com.shakuro.test
+package com.shakuro.test.network
 
+import com.shakuro.test.model.User
 import retrofit2.http.GET
 import retrofit2.http.Query
 

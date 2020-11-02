@@ -1,4 +1,4 @@
-package com.shakuro.test
+package com.shakuro.test.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

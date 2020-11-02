@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shakuro.test.R
-import com.shakuro.test.User
+import com.shakuro.test.model.User
 import kotlinx.android.synthetic.main.layout_recycler_item.view.*
 
 abstract class BaseAdapter(

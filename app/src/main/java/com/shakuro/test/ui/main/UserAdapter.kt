@@ -1,4 +1,4 @@
-package com.shakuro.test
+package com.shakuro.test.ui.main
 
 import com.shakuro.test.base.BaseAdapter
 import com.shakuro.test.base.Watcher

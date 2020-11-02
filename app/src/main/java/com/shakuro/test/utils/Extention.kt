@@ -1,7 +1,8 @@
-package com.shakuro.test
+package com.shakuro.test.utils
 
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.shakuro.test.R
 
 fun Fragment.showAlertDialog(message: String?, retry: (() -> Unit)? = null) {
     val builder = AlertDialog.Builder(requireContext()).apply {

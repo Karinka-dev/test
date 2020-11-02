@@ -1,4 +1,4 @@
-package com.shakuro.test
+package com.shakuro.test.ui.main
 
 import android.os.Bundle
 import android.util.Log
@@ -10,9 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.MemoryCategory
+import com.shakuro.test.*
 import com.shakuro.test.base.Watcher
 import com.shakuro.test.ui.detail.DetailPhotoFragment
+import com.shakuro.test.utils.DataState
+import com.shakuro.test.utils.MainStateEvent
+import com.shakuro.test.utils.showAlertDialog
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_users.*
 
 @AndroidEntryPoint
@@ -28,7 +33,7 @@ class UserFragment : Fragment(R.layout.fragment_users), Watcher {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        setTitle("Фотографии")
+        activity?.toolbar?.navigationIcon = null
         initList()
         Glide.get(requireContext()).setMemoryCategory(MemoryCategory.HIGH)
         swipe_container.setOnRefreshListener {
@@ -77,7 +82,6 @@ class UserFragment : Fragment(R.layout.fragment_users), Watcher {
     }
 
     override fun showDetailedScreenUsers(position: Int) {
-//        changeVisibilityBnvAndToolBar(false)
         val bundle = Bundle().apply {
             putParcelable(USER, adapter.arrayList[position])
         }
@@ -85,7 +89,13 @@ class UserFragment : Fragment(R.layout.fragment_users), Watcher {
             arguments = bundle
         }
         activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.mainContainer, fragment)?.addToBackStack(null)?.commit()
+            ?.setCustomAnimations(
+                R.anim.slide_to_right,
+                R.anim.slide_to_left
+            )
+            ?.replace(R.id.mainContainer, fragment)
+            ?.addToBackStack(null)
+            ?.commit()
     }
 
     companion object {

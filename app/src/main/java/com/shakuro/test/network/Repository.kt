@@ -1,5 +1,6 @@
-package com.shakuro.test
+package com.shakuro.test.network
 
+import com.shakuro.test.utils.DataState
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 

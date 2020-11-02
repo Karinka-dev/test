@@ -1,8 +1,12 @@
-package com.shakuro.test
+package com.shakuro.test.ui.main
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.shakuro.test.utils.DataState
+import com.shakuro.test.utils.MainStateEvent
+import com.shakuro.test.network.Repository
+import com.shakuro.test.model.User
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.onEach
