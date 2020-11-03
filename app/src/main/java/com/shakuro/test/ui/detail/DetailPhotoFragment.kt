@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.shakuro.test.R
 import com.shakuro.test.model.User
 import com.shakuro.test.ui.main.UserFragment
@@ -27,11 +28,9 @@ class DetailPhotoFragment : Fragment(R.layout.fragment_detail_photo) {
     }
 
     private fun initView() {
-        with(activity) {
-            com.bumptech.glide.Glide.with(requireContext())
-                .load(user.avatar_url).centerCrop()
-                .into(userImage)
-            userName.text = user.login
-        }
+       Glide.with(requireContext())
+            .load(user.avatar_url).centerCrop()
+            .into(userImage)
+        userName.text = user.login
     }
 }

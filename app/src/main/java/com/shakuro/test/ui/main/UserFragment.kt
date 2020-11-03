@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.MemoryCategory
-import com.shakuro.test.*
+import com.shakuro.test.R
 import com.shakuro.test.base.Watcher
-import com.shakuro.test.ui.detail.DetailPhotoFragment
 import com.shakuro.test.utils.DataState
 import com.shakuro.test.utils.MainStateEvent
 import com.shakuro.test.utils.showAlertDialog
@@ -82,20 +81,7 @@ class UserFragment : Fragment(R.layout.fragment_users), Watcher {
     }
 
     override fun showDetailedScreenUsers(position: Int) {
-        val bundle = Bundle().apply {
-            putParcelable(USER, adapter.arrayList[position])
-        }
-        val fragment: DetailPhotoFragment = DetailPhotoFragment().apply {
-            arguments = bundle
-        }
-        activity?.supportFragmentManager?.beginTransaction()
-            ?.setCustomAnimations(
-                R.anim.slide_to_right,
-                R.anim.slide_to_left
-            )
-            ?.replace(R.id.mainContainer, fragment)
-            ?.addToBackStack(null)
-            ?.commit()
+        viewModel.onOpenNewScreen(adapter.arrayList[position])
     }
 
     companion object {

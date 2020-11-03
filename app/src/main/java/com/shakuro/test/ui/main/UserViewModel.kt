@@ -3,17 +3,20 @@ package com.shakuro.test.ui.main
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.github.terrakok.cicerone.Router
+import com.shakuro.test.Screens
+import com.shakuro.test.model.User
+import com.shakuro.test.network.Repository
 import com.shakuro.test.utils.DataState
 import com.shakuro.test.utils.MainStateEvent
-import com.shakuro.test.network.Repository
-import com.shakuro.test.model.User
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 
 class UserViewModel
 @ViewModelInject
 constructor(
+    private val router: Router,
     private val mainRepository: Repository,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
@@ -65,5 +68,13 @@ constructor(
                 mutableUsers.postValue(DataState.Success(list))
             }
         }
+    }
+
+    fun onOpenNewScreen(user: User) {
+        router.navigateTo(Screens.userDetail(user))
+    }
+
+    fun onBackPressed() {
+        router.exit()
     }
 }
