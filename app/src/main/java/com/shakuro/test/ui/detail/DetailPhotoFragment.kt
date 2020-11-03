@@ -8,9 +8,11 @@ import com.bumptech.glide.Glide
 import com.shakuro.test.R
 import com.shakuro.test.model.User
 import com.shakuro.test.ui.main.UserFragment
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_detail_photo.*
 
+@AndroidEntryPoint
 class DetailPhotoFragment : Fragment(R.layout.fragment_detail_photo) {
 
     private val viewModel: DetailPhotoViewModel by viewModels()
@@ -22,7 +24,7 @@ class DetailPhotoFragment : Fragment(R.layout.fragment_detail_photo) {
         user = requireArguments().getParcelable(UserFragment.USER)!!
         activity?.toolbar?.navigationIcon = resources.getDrawable(R.drawable.ic_chevron_back)
         activity?.toolbar?.setNavigationOnClickListener {
-            activity?.supportFragmentManager?.popBackStackImmediate()
+            viewModel.onBackPressed()
         }
         initView()
     }
